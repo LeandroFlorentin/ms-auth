@@ -1,12 +1,7 @@
-import { verifyBody, APIError } from '../../shared';
+import { verifyBody, APIError, hashPassword } from '../../shared';
+import { IUserInput } from '../../application/dtos/users.dto';
 
-export type User = {
-  email: string;
-  username: string;
-  password: string;
-};
-
-export const createUserEntity = (user: User): User => {
+export const createUserEntity = (user: IUserInput): IUserInput => {
   const fieldsToVerify = ['email', 'username', 'password'];
 
   const isValid = verifyBody(user, fieldsToVerify);

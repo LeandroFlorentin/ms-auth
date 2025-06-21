@@ -1,17 +1,27 @@
 import { DataTypes, Model } from 'sequelize';
-import { sequelize } from '../index'; // Adjust the import path as necessary
+import { sequelize } from '../index';
 
-export class UserModel extends Model {}
-
-export interface UserDB {
+export interface UserAttributes {
   id: number;
-  email: string;
   username: string;
+  email: string;
   password: string;
-  role: string[];
+  role: string;
   createdAt: Date;
-  updatedAt: Date;
+  updatedAt: Date | null;
   isActive: boolean;
+}
+
+interface UserCreationAttributes extends Omit<UserAttributes, 'id' | 'role' | 'createdAt' | 'updatedAt' | 'isActive'> {}
+export class UserModel extends Model<UserAttributes, UserCreationAttributes> {
+  declare id: number;
+  declare username: string;
+  declare email: string;
+  declare password: string;
+  declare role: string;
+  declare createdAt: Date;
+  declare updatedAt: Date | null;
+  declare isActive: boolean;
 }
 
 UserModel.init(
@@ -20,7 +30,7 @@ UserModel.init(
     username: { type: DataTypes.STRING, allowNull: false, unique: true },
     email: { type: DataTypes.STRING, allowNull: false, unique: true },
     password: { type: DataTypes.STRING, allowNull: false },
-    role: { type: DataTypes.JSON, defaultValue: ['USER'] },
+    role: { type: DataTypes.TEXT, defaultValue: JSON.stringify(['USER']) },
     createdAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
     updatedAt: { type: DataTypes.DATE, defaultValue: null },
     isActive: { type: DataTypes.BOOLEAN, defaultValue: true },

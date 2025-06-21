@@ -1,10 +1,14 @@
 import { UserRepository } from '../../../domain/user/user.repository';
-import { User } from '../../../domain/user/user';
-import { UserModel, UserDB } from '../models/user.model';
+import { IUserInput, IUserDB } from '../../../application/dtos/users.dto';
+import { UserModel } from '../models/user.model';
 
 export const userRespository: UserRepository = {
-  async create(user: User): Promise<UserDB> {
+  async create(user: IUserInput): Promise<IUserDB> {
     const newUser = await UserModel.create(user);
-    return newUser.toJSON() as UserDB;
+    return newUser.toJSON() as IUserDB;
+  },
+  async findByEmailAndUsername(email: string, username: string): Promise<IUserDB | null> {
+    const user = await UserModel.findOne({ where: { email, username } });
+    return user;
   },
 };

@@ -10,7 +10,7 @@ export const verifyBody = (body: Record<string, any>, fields: string[]): IRespon
       validateArray.push(field);
     }
   });
-  return validateArray.length ? structureResponse(false, `Los sigueientes campos son obligatorios: ${validateArray.join(', ')}.`) : structureResponse(true, '');
+  return validateArray.length ? structureResponse(false, `Los siguientes campos son obligatorios: ${validateArray.join(', ')}.`) : structureResponse(true, '');
 };
 
 function structureResponse(boolean: boolean, message?: string): IResponseVerifyBody {
