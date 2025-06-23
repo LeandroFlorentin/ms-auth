@@ -1,6 +1,6 @@
-import { IUserInput, IUserDB } from '../../application/dtos/users.dto';
+import { IUserInput, IUserDB, IUserFindByEmailAndUsername } from '../../application/dtos/users.dto';
 
 export interface UserRepository {
   create(user: IUserInput): Promise<IUserDB>;
-  findByEmailAndUsername(email: string, username: string): Promise<IUserDB | null>;
+  findByEmailAndUsername(body: IUserFindByEmailAndUsername): Promise<IUserDB | null>;
 }

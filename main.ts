@@ -2,7 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import userRoutes from './interfaces/routes/users.routes';
+import routes from './interfaces/routes/';
 import { sequelize } from './infrastructure/database';
 import { errorMiddleware } from './interfaces/middlewares/error.middleware';
 
@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors());
-app.use('/users', userRoutes);
+app.use(routes);
 app.use(errorMiddleware);
 
 async function connectServer() {

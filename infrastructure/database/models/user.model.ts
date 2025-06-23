@@ -9,10 +9,9 @@ export interface UserAttributes {
   role: string;
   createdAt: Date;
   updatedAt: Date | null;
-  isActive: boolean;
 }
 
-interface UserCreationAttributes extends Omit<UserAttributes, 'id' | 'role' | 'createdAt' | 'updatedAt' | 'isActive'> {}
+interface UserCreationAttributes extends Omit<UserAttributes, 'id' | 'role' | 'createdAt' | 'updatedAt'> {}
 export class UserModel extends Model<UserAttributes, UserCreationAttributes> {
   declare id: number;
   declare username: string;
@@ -21,7 +20,6 @@ export class UserModel extends Model<UserAttributes, UserCreationAttributes> {
   declare role: string;
   declare createdAt: Date;
   declare updatedAt: Date | null;
-  declare isActive: boolean;
 }
 
 UserModel.init(
@@ -33,7 +31,6 @@ UserModel.init(
     role: { type: DataTypes.TEXT, defaultValue: JSON.stringify(['USER']) },
     createdAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
     updatedAt: { type: DataTypes.DATE, defaultValue: null },
-    isActive: { type: DataTypes.BOOLEAN, defaultValue: true },
   },
   { sequelize, tableName: 'users', timestamps: false },
 );

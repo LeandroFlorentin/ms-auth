@@ -7,3 +7,8 @@ export interface IUserInput {
 }
 
 export interface IUserDB extends UserAttributes {}
+
+export interface IUserFindByEmailAndUsername {
+  email?: string;
+  username?: string;
+}
