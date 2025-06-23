@@ -1,5 +1,5 @@
 import { UserRepository } from '../../../domain/user/user.repository';
-import { IUserInput, IUserDB, IUserFindByEmailAndUsername } from '../../../application/dtos/users.dto';
+import { IUserInput, IUserDB, IUserFindByEmailAndUsername } from '../../../application/dtos/users/users.dto';
 import { UserModel } from '../models/user.model';
 
 export const userRepository: UserRepository = {
@@ -8,7 +8,7 @@ export const userRepository: UserRepository = {
     return newUser.toJSON() as IUserDB;
   },
   async findByEmailAndUsername(body: IUserFindByEmailAndUsername): Promise<IUserDB | null> {
-    const user = await UserModel.findOne({ where: { ...body } });
-    return user;
+    const user = (await UserModel.findOne({ where: { ...body } })) as { dataValues: IUserDB } | null;
+    return user ? (user.dataValues as IUserDB) : null;
   },
 };

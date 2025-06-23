@@ -1,4 +1,4 @@
-import { UserAttributes } from '../../infrastructure/database/models/user.model';
+import { UserAttributes } from '../../../infrastructure/database/models/user.model';
 
 export interface IUserInput {
   email: string;

@@ -1,7 +1,7 @@
-import { UserRepository } from '../../domain/user/user.repository';
-import { createUserEntity } from '../../domain/user/user';
-import { IUserInput } from '../dtos/users.dto';
-import { APIError, hashPassword } from '../../shared';
+import { UserRepository } from '../../../domain/user/user.repository';
+import { createUserEntity } from '../../../domain/user/user';
+import { IUserInput } from '../../dtos/users/users.dto';
+import { APIError, hashPassword } from '../../../shared';
 
 export const createUser = async (userRepo: UserRepository, body: IUserInput) => {
   const userToCreate = createUserEntity(body);

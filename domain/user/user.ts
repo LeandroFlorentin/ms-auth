@@ -1,5 +1,5 @@
 import { verifyBody, APIError, verifyEmail, verifyPassword } from '../../shared';
-import { IUserInput } from '../../application/dtos/users.dto';
+import { IUserInput } from '../../application/dtos/users/users.dto';
 
 export const createUserEntity = (user: IUserInput): IUserInput => {
   const fieldsToVerify = ['email', 'username', 'password'];

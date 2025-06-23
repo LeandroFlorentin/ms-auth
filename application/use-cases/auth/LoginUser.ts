@@ -1,6 +1,6 @@
-import { UserRepository } from '../../domain/user/user.repository';
-import { APIError, verifyEmail, comparePassword, generateToken } from '../../shared';
-import { ILoginBody } from '../dtos/login.dto';
+import { UserRepository } from '../../../domain/user/user.repository';
+import { APIError, verifyEmail, comparePassword, generateToken } from '../../../shared';
+import { ILoginBody } from '../../dtos/auth/login.dto';
 
 export const loginUser = async (userRepo: UserRepository, body: ILoginBody) => {
   const isEmail = verifyEmail(body.username);
@@ -12,6 +12,8 @@ export const loginUser = async (userRepo: UserRepository, body: ILoginBody) => {
   if (!user) throw new APIError(400, `Usuario incorrecto: ${body.username}`);
 
   const { password, ...restUser } = user;
+
+  console.log('ASD', password, restUser);
 
   const isPasswordValid = await comparePassword(body.password, password);
   if (!isPasswordValid) throw new APIError(401, 'Contraseña incorrecta.');
