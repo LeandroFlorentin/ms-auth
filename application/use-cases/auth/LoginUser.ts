@@ -9,11 +9,9 @@ export const loginUser = async (userRepo: UserRepository, body: ILoginBody) => {
 
   const user = await userRepo.findByEmailAndUsername(sendBody);
 
-  if (!user) throw new APIError(400, `Usuario incorrecto: ${body.username}`);
+  if (!user) throw new APIError(400, `Usuario incorrecto`);
 
   const { password, ...restUser } = user;
-
-  console.log('ASD', password, restUser);
 
   const isPasswordValid = await comparePassword(body.password, password);
   if (!isPasswordValid) throw new APIError(401, 'Contraseña incorrecta.');
