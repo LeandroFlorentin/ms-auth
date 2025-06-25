@@ -8,7 +8,4 @@ export interface IUserInput {
 
 export interface IUserDB extends UserAttributes {}
 
-export interface IUserFindByEmailAndUsername {
-  email?: string;
-  username?: string;
-}
+export type IUserFindByEmailAndUsername = { email: string } | { username: string };

@@ -1,11 +1,10 @@
 import { UserRepository } from '../../../domain/user/user.repository';
-import { APIError, verifyEmail, comparePassword, generateToken } from '../../../shared';
+import { APIError, comparePassword, generateToken } from '../../../shared';
+import { LoginEntity } from '../../../domain/auth/auth';
 import { ILoginBody } from '../../dtos/auth/login.dto';
 
 export const loginUser = async (userRepo: UserRepository, body: ILoginBody) => {
-  const isEmail = verifyEmail(body.username);
-
-  const sendBody = isEmail ? { email: body.username } : { username: body.username };
+  const sendBody = LoginEntity(body.username);
 
   const user = await userRepo.findByEmailAndUsername(sendBody);
 
