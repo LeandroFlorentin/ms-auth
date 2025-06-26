@@ -1,5 +1,5 @@
-import { ReturnLoginEntity } from '../../application/dtos/auth/login.dto';
-import { z } from '../../infrastructure/zod/index';
+import { ReturnLoginEntity } from '&/application/dtos/auth/login.dto';
+import { z } from '&/infrastructure/zod/index';
 import authSchema from './auth.zod';
 
 export const LoginEntity = (username: string): ReturnLoginEntity => {

@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { jwtConfig } from '../config';
+import { jwtConfig } from '&/config';
 
 const JWT_SECRET = jwtConfig.JWT_SECRET;
 const EXPIRATION_TIME = jwtConfig.EXPIRATION_TIME;

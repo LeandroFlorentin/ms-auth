@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { userRepository } from '../../infrastructure/database/repositories/user.repository.impl';
-import { ILoginBody } from '../../application/dtos/auth/login.dto';
-import { APIError } from '../../shared';
-import { meUser, loginUser } from '../../application/use-cases/auth';
+import { userRepository } from '&/infrastructure/database/repositories/user.repository.impl';
+import { ILoginBody } from '&/application/dtos/auth/login.dto';
+import { APIError } from '&/shared';
+import { meUser, loginUser } from '&/application/use-cases/auth';
 
 export const loginUserHandler = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {

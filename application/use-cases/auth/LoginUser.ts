@@ -1,6 +1,6 @@
-import { UserRepository } from '../../../domain/user/user.repository';
-import { APIError, comparePassword, generateToken } from '../../../shared';
-import { LoginEntity } from '../../../domain/auth/auth';
+import { UserRepository } from '&/domain/user/user.repository';
+import { APIError, comparePassword, generateToken } from '&/shared';
+import { LoginEntity } from '&/domain/auth/auth';
 import { ILoginBody } from '../../dtos/auth/login.dto';
 
 export const loginUser = async (userRepo: UserRepository, body: ILoginBody) => {

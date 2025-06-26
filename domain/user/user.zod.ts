@@ -1,4 +1,4 @@
-import { createObjectZod, z } from '../../infrastructure/zod/index';
+import { createObjectZod, z } from '&/infrastructure/zod/index';
 
 const options = {
   email: z.string().min(1, { message: 'El email es obligatorio' }).email({ message: 'Formato de email inválido.' }),

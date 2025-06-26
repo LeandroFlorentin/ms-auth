@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { ZodError, manageMessageZod } from '../../infrastructure/zod/index';
+import { ZodError, manageMessageZod } from '&/infrastructure/zod/index';
 
 const jwtErrorNames = ['TokenExpiredError', 'JsonWebTokenError', 'NotBeforeError'];
 

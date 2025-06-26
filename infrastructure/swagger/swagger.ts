@@ -1,6 +1,6 @@
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-import { configSwagger } from '../../config/index';
+import { configSwagger } from '&/config/index';
 import paths from './routes';
 const options = {
   definition: {
@@ -9,6 +9,15 @@ const options = {
       title: 'Microservicio de autenticación.',
       version: '1.0.0',
       description: 'Microservicio encargado de la creación y autenticación de usuarios.',
+    },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
     },
     servers: [
       {

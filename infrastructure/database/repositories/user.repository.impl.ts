@@ -1,5 +1,5 @@
-import { UserRepository } from '../../../domain/user/user.repository';
-import { IUserInput, IUserDB, IUserFindByEmailAndUsername } from '../../../application/dtos/users/users.dto';
+import { UserRepository } from '&/domain/user/user.repository';
+import { IUserInput, IUserDB, IUserFindByEmailAndUsername } from '&/application/dtos/users/users.dto';
 import { UserModel } from '../models/user.model';
 import { Op } from 'sequelize';
 
