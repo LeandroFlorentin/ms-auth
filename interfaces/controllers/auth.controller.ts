@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import { userRepository } from '&/infrastructure/database/repositories/user.repository.impl';
 import { ILoginBody } from '&/application/dtos/auth/login.dto';
-import { APIError } from '&/shared';
 import { meUser, loginUser } from '&/application/use-cases/auth';
+import { RequestWithToken } from '&/types/express';
 
 export const loginUserHandler = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
@@ -14,11 +14,9 @@ export const loginUserHandler = async (req: Request, res: Response, next: NextFu
   }
 };
 
-export const meUserHandler = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const meUserHandler = async (req: RequestWithToken, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const header = req.headers.authorization;
-    if (!header) throw new APIError(401, 'No se envio token de autorización.');
-    const token = header.replace('Bearer ', '');
+    const token = req.token!;
     const decoded = meUser(token);
     res.status(200).json(decoded);
   } catch (error) {
