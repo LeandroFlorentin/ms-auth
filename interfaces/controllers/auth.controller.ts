@@ -14,7 +14,7 @@ export const loginUserHandler = async (req: Request, res: Response, next: NextFu
     const body = req.body as ILoginBody;
     const token = await loginUser(userRepository, body);
     logger.log(token);
-    res.status(200).json({ token });
+    res.status(200).json(token);
   } catch (error) {
     next(error);
   }

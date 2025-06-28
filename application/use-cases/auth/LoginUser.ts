@@ -1,9 +1,9 @@
 import { UserRepository } from '&/domain/user/user.repository';
 import { APIError, comparePassword, generateToken } from '&/shared';
 import { LoginEntity } from '&/domain/auth/auth';
-import { ILoginBody } from '../../dtos/auth/login.dto';
+import { ILoginBody, ReturnLoginUser } from '../../dtos/auth/login.dto';
 
-export const loginUser = async (userRepo: UserRepository, body: ILoginBody) => {
+export const loginUser = async (userRepo: UserRepository, body: ILoginBody): Promise<ReturnLoginUser> => {
   const sendBody = LoginEntity(body.username);
 
   const user = await userRepo.findByEmailAndUsername(sendBody);
@@ -17,5 +17,5 @@ export const loginUser = async (userRepo: UserRepository, body: ILoginBody) => {
 
   const token = generateToken(restUser);
 
-  return token;
+  return { token };
 };

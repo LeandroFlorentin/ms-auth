@@ -4,3 +4,7 @@ export interface ILoginBody {
 }
 
 export type ReturnLoginEntity = { username: string } | { email: string };
+
+export interface ReturnLoginUser {
+  token: string;
+}
