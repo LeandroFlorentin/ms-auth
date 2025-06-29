@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { ZodError, manageMessageZod } from '&/infrastructure/zod/index';
 import buildLogger from '&/infrastructure/winston';
+import { isAxiosError } from 'axios';
 
 const logger = buildLogger('middlewareError');
 
@@ -14,6 +15,12 @@ export const errorMiddleware = (err: any, req: Request, res: Response, next: Nex
       errors: [err.message],
     });
     return;
+  }
+
+  if (isAxiosError(err)) {
+    const status = err.response?.status || 500;
+    const errors = err.response?.data || { errors: ['Error interno de servidor'] };
+    res.status(status).json(errors);
   }
 
   if (err instanceof ZodError) {

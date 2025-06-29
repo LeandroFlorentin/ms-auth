@@ -1,12 +1,21 @@
-import { UserRepository } from '&/domain/user/user.repository';
+/* import { UserRepository } from '&/domain/user/user.repository'; */
 import { APIError, comparePassword, generateToken } from '&/shared';
-import { LoginEntity } from '&/domain/auth/auth';
 import { ILoginBody, ReturnLoginUser } from '../../dtos/auth/login.dto';
+import IRedisRepository from '../../../domain/redis/redis.repository';
+import IMsUserRepository from '&/domain/ms-users/ms-user.repository';
+import { IUserDB } from '&/domain/redis/redis.types';
 
-export const loginUser = async (userRepo: UserRepository, body: ILoginBody): Promise<ReturnLoginUser> => {
-  const sendBody = LoginEntity(body.username);
+export const loginUser = async (msUserRepository: IMsUserRepository, redisRepository: IRedisRepository, body: ILoginBody): Promise<ReturnLoginUser> => {
+  let user;
 
-  const user = await userRepo.findByEmailAndUsername(sendBody);
+  let cachedUser = await redisRepository.getValue(body.username);
+
+  if (cachedUser) user = JSON.parse(cachedUser) as IUserDB;
+  else {
+    let externalUser = await msUserRepository.getUserByMsUsers(body.username);
+    redisRepository.setValue(externalUser.username, JSON.stringify(externalUser));
+    user = externalUser;
+  }
 
   if (!user) throw new APIError(400, `Usuario incorrecto`);
 
