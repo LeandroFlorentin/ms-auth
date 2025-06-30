@@ -1,7 +1,10 @@
 import axios from 'axios';
 import { IUserDB } from '&/domain/redis/redis.types';
 import { msUsers } from '&/config';
+import buildLogger from '../winston';
 const { URL } = msUsers;
+
+const logger = buildLogger('ms-users');
 
 const instance = axios.create({
   baseURL: URL,
