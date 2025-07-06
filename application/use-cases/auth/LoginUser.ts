@@ -1,19 +1,19 @@
 /* import { UserRepository } from '&/domain/user/user.repository'; */
 import { APIError, comparePassword, generateToken } from '&/shared';
 import { ILoginBody, ReturnLoginUser } from '../../dtos/auth/login.dto';
-import IRedisRepository from '../../../domain/redis/redis.repository';
+import ICacheRepository from '&/domain/cache/cache.repository';
 import IMsUserRepository from '&/domain/ms-users/ms-user.repository';
 
-export const loginUser = async (msUserRepository: IMsUserRepository, redisRepository: IRedisRepository, body: ILoginBody): Promise<ReturnLoginUser> => {
+export const loginUser = async (msUserRepository: IMsUserRepository, cacheRepository: ICacheRepository, body: ILoginBody): Promise<ReturnLoginUser> => {
   let user;
 
-  let cachedUser = await redisRepository.getValue(body.username);
+  let cachedUser = await cacheRepository.getValue(body.username);
 
   if (cachedUser) user = cachedUser;
   else {
     let externalUser = await msUserRepository.getUserByMsUsers(body.username);
-    redisRepository.setValue(externalUser.username, JSON.stringify(externalUser));
-    redisRepository.setValue(externalUser.email, JSON.stringify(externalUser));
+    cacheRepository.setValue(externalUser.username, JSON.stringify(externalUser));
+    cacheRepository.setValue(externalUser.email, JSON.stringify(externalUser));
     user = externalUser;
   }
 

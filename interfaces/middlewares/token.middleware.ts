@@ -1,7 +1,7 @@
 import { Response, NextFunction } from 'express';
 import { APIError } from '&/shared';
 import { RequestWithToken } from '&/types/express';
-import buildLogger from '&/infrastructure/winston';
+import buildLogger from '&/infrastructure/logs';
 
 const logger = buildLogger('middlewareToken');
 

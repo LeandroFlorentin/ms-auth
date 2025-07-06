@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { IUserDB } from '&/domain/redis/redis.types';
+import { IUserDB } from '&/domain/cache/cache.types';
 import { msUsers } from '&/config';
-import buildLogger from '../winston';
+import buildLogger from '../logs';
 const { URL } = msUsers;
 
 const logger = buildLogger('ms-users');

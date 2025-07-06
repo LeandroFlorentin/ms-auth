@@ -1,6 +1,6 @@
-import { IUserDB } from './redis.types';
+import { IUserDB } from './cache.types';
 
-export default interface IRedisRepository {
+export default interface ICacheRepository {
   setValue: (key: string, value: string) => Promise<string | null>;
   getValue: (key: string) => Promise<IUserDB | null>;
 }
