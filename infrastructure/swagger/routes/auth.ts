@@ -12,17 +12,17 @@ export default [
                 properties: {
                   username: {
                     type: 'string',
-                    example: 'John doe',
+                    example: 'user_prueba',
                   },
                   password: {
                     type: 'string',
-                    example: 'Password1!',
+                    example: 'Prueba123$',
                   },
                 },
                 required: ['username', 'password'],
                 example: {
-                  username: 'John doe',
-                  password: 'Password1!',
+                  username: 'user_prueba',
+                  password: 'Prueba123$',
                 },
               },
             },
@@ -117,9 +117,9 @@ export default [
                   },
                   example: {
                     id: 1,
-                    username: 'leandro5466',
-                    email: 'leandro.florentin@gmail.com',
-                    role: '["USER"]',
+                    username: 'user_prueba',
+                    email: 'prueba@gmail.com',
+                    role: ['ADMIN'],
                     createdAt: '2025-06-26T13:20:28.020Z',
                     updatedAt: null,
                     iat: 1750944046,

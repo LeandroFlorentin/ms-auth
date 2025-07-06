@@ -5,28 +5,28 @@
 ### Tecnologías utilizadas:
 
 - Lenguaje de programación.
-  - **TypeScript:** para garantizar tipado estático y mayor mantenibilidad del código.
+  - `TypeScript`: para garantizar tipado estático y mayor mantenibilidad del código.
 - Frameworks.
-  - **Express:** para construir las rutas HTTP y manejar las solicitudes de login, registro y validación de tokens.
+  - `Express`: para construir las rutas HTTP y manejar las solicitudes de login, registro y validación de tokens.
 - Bases de datos.
-  - **PostgresSQL:** para persistir los datos de usuarios registrados.
-  - **Redis:** para cachear usuarios autenticados, mejorando la velocidad de respuesta en validaciones.
+  - `PostgresSQL`: para persistir los datos de usuarios registrados.
+  - `Redis`: para cachear usuarios autenticados, mejorando la velocidad de respuesta en validaciones.
 - Orm
-  - **Sequelize:** para mapear modelos relacionales de PostgreSQL en código JavaScript/TypeScript y facilitar las consultas.
+  - `Sequelize`: para mapear modelos relacionales de PostgreSQL en código JavaScript/TypeScript y facilitar las consultas.
 - Testing
-  - **Jest:** para pruebas unitarias de funciones críticas como validación y generación de tokens.
-  - **Supertest:** para pruebas de integración sobre los endpoints expuestos (e.g. /login, /register).
+  - `Jest`: para pruebas unitarias de funciones críticas como validación y generación de tokens.
+  - `Supertest`: para pruebas de integración sobre los endpoints expuestos (e.g. /login, /register).
 - Librerias
-  - **JWT:** (jsonwebtoken): para la generación y validación de tokens de acceso.
-  - **Swagger:** para documentar las rutas y facilitar pruebas manuales del servicio.
-  - **Winston:** para el logging estructurado y centralizado de errores, advertencias y eventos del sistema.
-  - **Bcrypt:** para el hash y la comparación segura de contraseñas.
+  - `JWT`: (jsonwebtoken): para la generación y validación de tokens de acceso.
+  - `Swagger`: para documentar las rutas y facilitar pruebas manuales del servicio.
+  - `Winston`: para el logging estructurado y centralizado de errores, advertencias y eventos del sistema.
+  - `Bcrypt`: para el hash y la comparación segura de contraseñas.
 
 # Tabla de contenidos:
 
 - [Instalación](#instalación)
 - [Referencia de API](#referencia-de-api)
-- [Autores](#autores)
+- [Autor](#autor)
 
 # Instalación
 
@@ -67,8 +67,79 @@ Una vez tengas tu dialect crea el archivo .env en la raiz del proyecto y ponle t
 
 # Referencia de API
 
-sdfgdgfdgdf
+Tener en cuenta que en este microservicio se crea un usuario de prueba en Redis al iniciar el proyecto, el cual esta como ejemplo en el swagger de el endpoint de autenticación.
 
-# Autores
+```diff
+- Red is for not required authentication
++ Green is for required authentication
+```
 
-LEANDRO FLORENTIN
+## Endpoint de Login.
+
+```http
+  POST auth/login
+```
+
+```diff
+- Authentication is not required
+```
+
+Parametros del body:
+
+| Parametro  | Tipo     | Descripción                                                       |
+| :--------- | :------- | :---------------------------------------------------------------- |
+| `username` | `string` | **Requerido**. Usuario o email con el que se registro al usuario. |
+| `password` | `string` | **Requerido**. Contraseña del usuario.                            |
+
+Ejemplo de respuesta correcta:
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ1c2VyX3BydWViYSIsImVtYWlsIjoicHJ1ZWJhQGdtYWlsLmNvbSIsInJvbGUiOlsiQURNSU4iXSwiY3JlYXRlZEF0IjoiMjAyNS0wNy0wNlQxMzo0NDoyMy4yMzlaIiwidXBkYXRlZEF0IjpudWxsLCJpYXQiOjE3NTE4MDk0NzEsImV4cCI6MTc1MTgxMzA3MX0.Pxc0zHLrF9uIg8CU32Lq-prg36hqAww0JsIXRZcU_sc"
+}
+```
+
+Ejemplo de respuesta fallida:
+
+```json
+{
+  "errors": ["Usuario incorrecto."]
+}
+```
+
+# Endpoint Me.
+
+```http
+  /auth/me
+```
+
+```diff
++ Authentication is required
+```
+
+Ejemplo de respuesta correcta:
+
+```json
+{
+  "id": 1,
+  "username": "user_prueba",
+  "email": "prueba@gmail.com",
+  "role": ["ADMIN"],
+  "createdAt": "2025-07-06T13:44:23.239Z",
+  "updatedAt": null,
+  "iat": 1751809471,
+  "exp": 1751813071
+}
+```
+
+Ejemplo de respuesta incorrecta:
+
+```json
+{
+  "errors": ["No se envio token de autorización."]
+}
+```
+
+# Autor
+
+[@LeandroFlorentin](https://www.linkedin.com/in/leandro-florentin/)
