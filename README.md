@@ -17,7 +17,7 @@
   - `Sequelize`: para mapear modelos relacionales de PostgreSQL en código JavaScript/TypeScript y facilitar las consultas.
 - Testing
   - `Jest`: para pruebas unitarias de funciones críticas como validación y generación de tokens.
-  - `Supertest`: para pruebas de integración sobre los endpoints expuestos (e.g. /login, /register).
+  - `Supertest`: para pruebas de integración sobre los endpoints expuestos (e.g. /login, /me).
 - Librerias
   - `JWT`: (jsonwebtoken): para la generación y validación de tokens de acceso.
   - `Swagger`: para documentar las rutas y facilitar pruebas manuales del servicio.
