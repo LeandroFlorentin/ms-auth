@@ -1,6 +1,8 @@
 # Microservicio de Autenticación
 
-## Este microservicio se encarga de la autenticación de usuarios mediante validación de credenciales, emisión de tokens JWT y de sesiones activas. <br/>El desarrollo del servicio sigue los principios de arquitectura limpia (Clean Architecture), separando responsabilidades en capas como domain, application, infrastructure e interfaces, lo que facilita el mantenimiento, la escalabilidad y la capacidad de testing.
+## Este microservicio se encarga de la autenticación de usuarios mediante validación de credenciales, emisión de tokens JWT y de sesiones activas.
+
+## El desarrollo del servicio sigue los principios de arquitectura limpia (Clean Architecture), separando responsabilidades en capas como domain, application, infrastructure e interfaces, lo que facilita el mantenimiento, la escalabilidad y la capacidad de testing.
 
 ### Tecnologías utilizadas:
 
