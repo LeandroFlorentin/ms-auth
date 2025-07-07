@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { ILoginBody } from '&/application/dtos/auth/login.dto';
 import { meUser, loginUser } from '&/application/use-cases/auth';
-import { RequestWithToken } from '&/types/express';
+import { RequestWithToken, RequestLoginUser } from '&/types/express';
 import buildLogger from '&/infrastructure/logs';
 import { cacheRepository } from '&/infrastructure/cache/repositories';
 import { msUserRepository } from '&/infrastructure/ms-users';
@@ -10,10 +9,9 @@ const service = 'auth';
 
 const logger = buildLogger(service);
 
-export const loginUserHandler = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const loginUserHandler = async (req: RequestLoginUser, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const body = req.body as ILoginBody;
-    const token = await loginUser(msUserRepository, cacheRepository, body);
+    const token = await loginUser(msUserRepository, cacheRepository, req.body);
     logger.log(token);
     res.status(200).json(token);
   } catch (error) {

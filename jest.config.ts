@@ -11,6 +11,7 @@ const config: Config = {
   testEnvironment: 'jest-environment-node',
   testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)'],
   roots: ['./tests'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 };
 
 export default config;

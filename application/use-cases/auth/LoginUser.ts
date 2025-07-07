@@ -8,16 +8,17 @@ export const loginUser = async (msUserRepository: IMsUserRepository, cacheReposi
   let user;
 
   let cachedUser = await cacheRepository.getValue(body.username);
-
   if (cachedUser) user = cachedUser;
   else {
     let externalUser = await msUserRepository.getUserByMsUsers(body.username);
-    cacheRepository.setValue(externalUser.username, JSON.stringify(externalUser));
-    cacheRepository.setValue(externalUser.email, JSON.stringify(externalUser));
-    user = externalUser;
+    if (externalUser) {
+      cacheRepository.setValue(externalUser.username, JSON.stringify(externalUser));
+      cacheRepository.setValue(externalUser.email, JSON.stringify(externalUser));
+      user = externalUser;
+    }
   }
 
-  if (!user) throw new APIError(400, `Usuario incorrecto`);
+  if (!user) throw new APIError(400, `Usuario incorrecto.`);
 
   const { password, ...restUser } = user;
 

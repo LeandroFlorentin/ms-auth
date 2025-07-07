@@ -7,12 +7,12 @@
     "rootDir": "./",
     "baseUrl": "./",
     "paths": { "&/*": ["./*"] },
-    "outDir": "dist/",
+    "outDir": "dist",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["**/*", "../ms-users/interface/controllers/users.controller.ts"],
+  "include": ["**/*"],
   "exclude": ["node_modules", "dist"]
 }

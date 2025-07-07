@@ -15,8 +15,8 @@ const instance = axios.create({
 });
 
 export const msUserRepository = {
-  getUserByMsUsers: async (username: string): Promise<IUserDB> => {
-    const response = (await instance.get(`/users/get_by_username?username=${username}`)) as { data: IUserDB };
+  getUserByMsUsers: async (username: string): Promise<IUserDB | null> => {
+    const response = (await instance.get(`/users/get_by_username?username=${username}`)) as { data: IUserDB | null };
     return response.data;
   },
 };

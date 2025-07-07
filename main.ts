@@ -26,3 +26,5 @@ async function connectServer() {
 }
 
 connectServer();
+
+export default app;
