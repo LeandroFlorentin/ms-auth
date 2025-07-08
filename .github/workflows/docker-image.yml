@@ -37,6 +37,10 @@ jobs:
         redis-password: 'password'
 
     - name: Run tests
+      env:
+        RD_PORT: 6379
+        RD_HOST: 'localhost'
+        RD_PASSOWRD: 'password'
       run: npm run test
 
     - name: Docker login
