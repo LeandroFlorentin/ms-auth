@@ -26,6 +26,12 @@ jobs:
         format: "${major}.${minor}.${patch}-prerelease${increment}"
       id: version
 
+   - name: Install dependencies
+     run: npm install
+
+   - name: Run tests
+     run: npm run test
+
     - name: Docker login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
