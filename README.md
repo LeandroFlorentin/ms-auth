@@ -80,6 +80,8 @@ Tener en cuenta que en este microservicio se crea un usuario de prueba en Redis 
 + Green is for required authentication
 ```
 
+Los endpoints que requieran autenticación deberán enviar su token a través de los headers, utilizando el esquema Bearer Token.
+
 ## Endpoint de Login.
 
 ```http
