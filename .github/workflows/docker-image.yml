@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout codee
+    - name: Checkout code
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
@@ -42,7 +42,7 @@ jobs:
       env:
         RD_PORT: ${{secrets.RD_PORT}}
         RD_HOST: ${{secrets.RD_HOST}}
-        RD_PASSWORD: ${{secrets.RD_PASSWORD}}
+        RD_PASSWORD: 'password'
         JWT_SECRET: ${{secrets.JWT_SECRET}}
         EXPIRATION_TIME: ${{secrets.EXPIRATION_TIME}}
         PORT: ${{secrets.PORT}}
