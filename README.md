@@ -23,6 +23,10 @@
   - `Swagger`: para documentar las rutas y facilitar pruebas manuales del servicio.
   - `Winston`: para el logging estructurado y centralizado de errores, advertencias y eventos del sistema.
   - `Bcrypt`: para el hash y la comparación segura de contraseñas.
+- Contenerización:
+  - `Docker`: Para contenerizar la aplicación.
+- CI/CD
+  - `GitHub Actions`: para la ejecución de testing, versionado, buildeo y pusheo de imagenes de docker a dockerhub.
 
 # Tabla de contenidos:
 
