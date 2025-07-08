@@ -40,12 +40,12 @@ jobs:
 
     - name: Run tests
       env:
-        RD_PORT: ${{secrets.RD_PORT}}
-        RD_HOST: ${{secrets.RD_HOST}}
+        RD_PORT: 6379
+        RD_HOST: 'localhost'
         RD_PASSWORD: 'password'
-        JWT_SECRET: ${{secrets.JWT_SECRET}}
-        EXPIRATION_TIME: ${{secrets.EXPIRATION_TIME}}
-        PORT: ${{secrets.PORT}}
+        JWT_SECRET: 'MANCHITA'
+        EXPIRATION_TIME: '1h'
+        PORT: 3000
       run: npm run test
 
     - name: Docker login
