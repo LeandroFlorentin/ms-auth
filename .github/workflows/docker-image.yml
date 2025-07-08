@@ -29,11 +29,12 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Setup Redis
-      uses: actions/setup-redis@v1
-      with: 
-        redis-version: '8'
-        redis-port: 6379
+    - name: Start Redis
+      uses: supercharge/redis-github-action@1.7.0
+      with:
+        redis-image: redis/redis-stack-server
+        redis-version: ${{ matrix.redis-version }}
+        redis-password: 'password'
 
     - name: Run tests
       run: npm run test
