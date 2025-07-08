@@ -48,7 +48,7 @@ Puedes buscar el dialec correspondiente a la base de datos que desees utilizar e
 
 Una vez tengas tu dialect crea el archivo .env en la raiz del proyecto y ponle tus credenciales.
 
-**Aclaracion** Este microservicio de dependiente del microservicio de usuarios, ya que este el ms-usuarios es el encargado de crear los usuarios que se autentícan aqui, para conocer mas de este microservicio revise este [repositorio](https://github.com/LeandroFlorentin/ms-users)
+**Aclaracion** Este microservicio es dependiente del microservicio de usuarios, ya que este el ms-usuarios es el encargado de crear los usuarios que se autentícan aqui, para conocer mas de este microservicio revise este [repositorio](https://github.com/LeandroFlorentin/ms-users)
 
 ```env
     PORT=<YOUR_PORT>
