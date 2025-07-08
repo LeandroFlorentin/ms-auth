@@ -10,6 +10,7 @@ describe('Test de integración de los endpoints de autenticación.', () => {
       const instance = getInstance('post', app, '/auth/login');
       const sendBody = { username: 'user_prueba', password: 'Prueba123$' };
       const { status, body } = await instance.send(sendBody);
+      console.log('ERRORUNO', status, body);
       expect(status).toBe(200);
       expect(body).toMatchObject({
         token: expect.any(String),
@@ -24,6 +25,7 @@ describe('Test de integración de los endpoints de autenticación.', () => {
       const instance = getInstance('post', app, '/auth/login');
       const sendBody = { username: 'user_prueba', password: 'Prueba123' };
       const { status, body } = await instance.send(sendBody);
+      console.log('ERRORDOS', status, body);
       expect(status).toBe(401);
       expect(body).toMatchObject({
         errors: ['Contraseña incorrecta.'],
@@ -51,9 +53,11 @@ describe('Test de integración de los endpoints de autenticación.', () => {
   });
   it('Verificando endpoint Me', async () => {
     try {
+      console.log('TOKENTRES', token);
       const headers = { Authorization: 'Bearer ' + token };
       const instance = getInstance('get', app, '/auth/me');
       const { status, body } = await instance.set(headers);
+      console.log('ERRORTRES', status, body);
       expect(status).toBe(200);
       expect(body).toMatchObject({
         id: 1,
