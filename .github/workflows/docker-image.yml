@@ -31,12 +31,10 @@ jobs:
 
     - name: Start Redis
       uses: supercharge/redis-github-action@1.7.0
-      env:
-       RD_PASSWORD: ${{secrets.RD_PASSWORD}}
       with:
         redis-image: redis/redis-stack-server
         redis-version: ${{ matrix.redis-version }}
-        redis-password: $RD_PASSWORD
+        redis-password: 'password'
 
     - name: Run tests
       env:
