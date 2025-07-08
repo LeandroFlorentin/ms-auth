@@ -12,12 +12,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    services:
-      redis:
-        image: redis:8.0-alpine
-        ports:
-          - 6379:6379
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -34,6 +28,12 @@ jobs:
 
     - name: Install dependencies
       run: npm install
+
+    - name: Setup Redis
+      uses: actions/setup-redis@v1
+      with: 
+        redis-version: '8'
+        redis-port: 6379
 
     - name: Run tests
       run: npm run test
