@@ -12,8 +12,6 @@
   - `Express`: para construir las rutas HTTP y manejar las solicitudes de login, registro y validación de tokens.
 - Bases de datos.
   - `Redis`: para cachear usuarios autenticados, mejorando la velocidad de respuesta en validaciones.
-- Orm
-  - `Sequelize`: para mapear modelos relacionales de PostgreSQL en código JavaScript/TypeScript y facilitar las consultas.
 - Testing
   - `Jest`: para pruebas unitarias de funciones críticas como validación y generación de tokens.
   - `Supertest`: para pruebas de integración sobre los endpoints expuestos (e.g. /login, /me).
