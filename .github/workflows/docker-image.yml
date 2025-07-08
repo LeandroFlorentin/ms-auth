@@ -31,19 +31,21 @@ jobs:
 
     - name: Start Redis
       uses: supercharge/redis-github-action@1.7.0
+      env:
+       RD_PASSWORD: ${{secrets.RD_PASSWORD}}
       with:
         redis-image: redis/redis-stack-server
         redis-version: ${{ matrix.redis-version }}
-        redis-password: 'password'
+        redis-password: $RD_PASSWORD
 
     - name: Run tests
       env:
-        RD_PORT: 6379
-        RD_HOST: 'localhost'
-        RD_PASSOWRD: 'password'
-        JWT_SECRET: 'MANCHITA'
-        EXPIRATION_TIME: '1h'
-        PORT: 3000
+        RD_PORT: ${{secrets.RD_PORT}}
+        RD_HOST: ${{secrets.RD_HOST}}
+        RD_PASSWORD: ${{secrets.RD_PASSWORD}}
+        JWT_SECRET: ${{secrets.JWT_SECRET}}
+        EXPIRATION_TIME: ${{secrets.EXPIRATION_TIME}}
+        PORT: ${{secrets.PORT}}
       run: npm run test
 
     - name: Docker login
