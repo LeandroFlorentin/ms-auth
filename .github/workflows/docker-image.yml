@@ -37,8 +37,8 @@ jobs:
       env:
         NEW_VERSION: ${{steps.version.outputs.version}}
       run: |
-        docker build -t lendro5622/ms-auth:$NEW_VERSION
-        docker build -t lendro5622/ms-auth:latest
+        docker build -t lendro5622/ms-auth:$NEW_VERSION .
+        docker build -t lendro5622/ms-auth:latest .
     - name: Push Docker Image
       env:
         NEW_VERSION: ${{steps.version.outputs.version}}
