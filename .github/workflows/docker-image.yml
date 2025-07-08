@@ -22,7 +22,7 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-      command: redis-server --requirepass password
+        command: redis-server --requirepass password
 
     steps:
     - name: Checkout code
