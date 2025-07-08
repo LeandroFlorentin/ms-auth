@@ -43,6 +43,7 @@ jobs:
         RD_PASSOWRD: 'password'
         JWT_SECRET: 'MANCHITA'
         EXPIRATION_TIME: '1h'
+        PORT: 3000
       run: npm run test
 
     - name: Docker login
