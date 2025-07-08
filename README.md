@@ -11,7 +11,6 @@
 - Frameworks.
   - `Express`: para construir las rutas HTTP y manejar las solicitudes de login, registro y validación de tokens.
 - Bases de datos.
-  - `PostgresSQL`: para persistir los datos de usuarios registrados.
   - `Redis`: para cachear usuarios autenticados, mejorando la velocidad de respuesta en validaciones.
 - Orm
   - `Sequelize`: para mapear modelos relacionales de PostgreSQL en código JavaScript/TypeScript y facilitar las consultas.
@@ -19,6 +18,7 @@
   - `Jest`: para pruebas unitarias de funciones críticas como validación y generación de tokens.
   - `Supertest`: para pruebas de integración sobre los endpoints expuestos (e.g. /login, /me).
 - Librerias
+  - `Zod`: para la verificación de los cuerpos en las peticiones http.
   - `JWT`: (jsonwebtoken): para la generación y validación de tokens de acceso.
   - `Swagger`: para documentar las rutas y facilitar pruebas manuales del servicio.
   - `Winston`: para el logging estructurado y centralizado de errores, advertencias y eventos del sistema.
