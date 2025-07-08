@@ -16,7 +16,6 @@
   - `Jest`: para pruebas unitarias de funciones críticas como validación y generación de tokens.
   - `Supertest`: para pruebas de integración sobre los endpoints expuestos (e.g. /login, /me).
 - Librerias
-  - `Zod`: para la verificación de los cuerpos en las peticiones http.
   - `JWT`: (jsonwebtoken): para la generación y validación de tokens de acceso.
   - `Swagger`: para documentar las rutas y facilitar pruebas manuales del servicio.
   - `Winston`: para el logging estructurado y centralizado de errores, advertencias y eventos del sistema.
