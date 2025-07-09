@@ -10,7 +10,7 @@ describe('Test token middleware', () => {
       tokenMiddleware(req, res, next);
     } catch (error: any) {
       expect(error).toBeInstanceOf(APIError);
-      expect(error.message).toBe('No se envio autorización.');
+      expect(error.message).toBe('Token no enviado.');
       expect(error.code).toBe(401);
     }
   });
@@ -46,7 +46,7 @@ describe('Test token middleware', () => {
       tokenMiddleware(req, res, next);
     } catch (error: any) {
       expect(error).toBeInstanceOf(APIError);
-      expect(error.message).toBe('No se envio token.');
+      expect(error.message).toBe('Token no enviado.');
       expect(error.code).toBe(401);
     }
   });
