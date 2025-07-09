@@ -1,6 +1,6 @@
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-import { configSwagger } from '&/config/index';
+import { configDocumentation } from '&/config/index';
 import paths from './routes';
 const options = {
   definition: {
@@ -32,9 +32,9 @@ const options = {
 
 const openapiSpecification = swaggerJsdoc(options);
 
-const implementSwagger = (app: any, port: number) => {
+const implementDocumentation = (app: any, port: number) => {
   app.use('/documentation', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
-  console.log(`Ver documentación en: ${configSwagger.URL_BASE}${port}/documentation`);
+  console.log(`Ver documentación en: ${configDocumentation.URL_BASE}${port}/documentation`);
 };
 
-export default implementSwagger;
+export default implementDocumentation;

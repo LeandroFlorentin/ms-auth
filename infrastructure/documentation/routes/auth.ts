@@ -129,8 +129,8 @@ export default [
               },
             },
           },
-          400: {
-            description: 'Success',
+          401: {
+            description: 'Unauthorized',
             content: {
               'application/json': {
                 schema: {

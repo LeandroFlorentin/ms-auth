@@ -6,7 +6,7 @@ import routes from './interfaces/routes/';
 import { errorMiddleware } from './interfaces/middlewares/error.middleware';
 import { mainConfig } from './config';
 import { createUser } from './infrastructure/cache/helpers/createUser';
-import implementSwagger from './infrastructure/swagger/swagger';
+import implementDocumentation from './infrastructure/documentation/documentation';
 
 const app = express();
 
@@ -20,7 +20,7 @@ async function connectServer() {
   const { PORT } = mainConfig;
   app.listen(PORT, () => {
     createUser();
-    implementSwagger(app, PORT);
+    implementDocumentation(app, PORT);
     console.log(`Servidor escuchando en puerto: ${PORT}`);
   });
 }
