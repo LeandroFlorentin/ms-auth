@@ -48,7 +48,7 @@ export default [
             },
           },
           400: {
-            description: 'Success',
+            description: 'Bad request',
             content: {
               'application/json': {
                 schema: {
@@ -144,7 +144,7 @@ export default [
                     },
                   },
                   example: {
-                    errors: ['No se envio token de autorización.'],
+                    errors: ['Token no enviado.'],
                   },
                 },
               },
