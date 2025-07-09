@@ -18,7 +18,7 @@ export const loginUser = async (msUserRepository: IMsUserRepository, cacheReposi
     }
   }
 
-  if (!user) throw new APIError(400, `Usuario incorrecto.`);
+  if (!user) throw new APIError(401, `Usuario incorrecto.`);
 
   const { password, ...restUser } = user;
 
