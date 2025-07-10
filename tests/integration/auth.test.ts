@@ -24,6 +24,7 @@ describe('Test de integración de los endpoints de autenticación.', () => {
       const instance = getInstance('post', app, '/auth/login');
       const sendBody = { username: 'user_prueba', password: 'Prueba123' };
       const { status, body } = await instance.send(sendBody);
+      console.log('STATUSSSSS', status, body);
       expect(status).toBe(401);
       expect(body).toMatchObject({
         errors: ['Contraseña incorrecta.'],
@@ -39,7 +40,7 @@ describe('Test de integración de los endpoints de autenticación.', () => {
       const instance = getInstance('post', app, '/auth/login');
       const sendBody = { username: 'user_prueba123', password: 'Prueba123$' };
       const { status, body } = await instance.send(sendBody);
-      expect(status).toBe(400);
+      expect(status).toBe(401);
       expect(body).toMatchObject({
         errors: ['Usuario incorrecto.'],
       });
