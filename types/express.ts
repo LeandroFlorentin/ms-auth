@@ -1,4 +1,4 @@
-import { Request } from 'express';
+import { Request, Application } from 'express';
 import { ILoginBody } from '&/application/dtos/auth/login.dto';
 
 export interface RequestWithToken extends Request {
@@ -8,3 +8,5 @@ export interface RequestWithToken extends Request {
 export interface RequestLoginUser extends Request {
   body: ILoginBody;
 }
+
+export { Application };

@@ -7,10 +7,10 @@ import IMsUserRepository from '&/domain/ms-users/ms-user.repository';
 export const loginUser = async (msUserRepository: IMsUserRepository, cacheRepository: ICacheRepository, body: ILoginBody): Promise<ReturnLoginUser> => {
   let user;
 
-  let cachedUser = await cacheRepository.getValue(body.username);
+  const cachedUser = await cacheRepository.getValue(body.username);
   if (cachedUser) user = cachedUser;
   else {
-    let externalUser = await msUserRepository.getUserByMsUsers(body.username);
+    const externalUser = await msUserRepository.getUserByMsUsers(body.username);
     if (externalUser) {
       cacheRepository.setValue(externalUser.username, JSON.stringify(externalUser));
       cacheRepository.setValue(externalUser.email, JSON.stringify(externalUser));

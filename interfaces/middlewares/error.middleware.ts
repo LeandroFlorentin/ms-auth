@@ -1,12 +1,13 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response } from 'express';
 import buildLogger from '&/infrastructure/logs';
 import { isAxiosError } from 'axios';
+import { ErrorType } from '&/types/middlewares';
 
 const logger = buildLogger('middlewareError');
 
 const jwtErrorNames = ['TokenExpiredError', 'JsonWebTokenError', 'NotBeforeError'];
 
-export const errorMiddleware = (err: any, req: Request, res: Response, next: NextFunction) => {
+export const errorMiddleware = (err: ErrorType, _: Request, res: Response) => {
   logger.error(err.message);
 
   if (jwtErrorNames.includes(err.name)) {
@@ -22,8 +23,8 @@ export const errorMiddleware = (err: any, req: Request, res: Response, next: Nex
     res.status(status).json(errors);
   }
 
-  const status = err.code || err.status || 500;
-  let message = err.message || 'Internal Server Error';
+  const status = Number(err.code) || 500;
+  const message = err.message || 'Internal Server Error';
   res.status(status).json({
     errors: [message],
   });

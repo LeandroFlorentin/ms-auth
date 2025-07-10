@@ -20,6 +20,7 @@
   - `Swagger`: para documentar las rutas y facilitar pruebas manuales del servicio.
   - `Winston`: para el logging estructurado y centralizado de errores, advertencias y eventos del sistema.
   - `Bcrypt`: para el hash y la comparación segura de contraseñas.
+  - `ESlint`: para el monitoreo y correcion de errores en el codigo.
 - Contenerización:
   - `Docker`: Para contenerizar la aplicación.
 - CI/CD
@@ -62,7 +63,6 @@ Una vez tengas tu dialect crea el archivo .env en la raiz del proyecto y ponle t
     RD_HOST=<YOUR_REDIS_HOST>
 
     JWT_SECRET=<YOUR_JWT_SECRET>
-    EXPIRATION_TIME=<YOUR_EXPIRATION_TIME> //example: 1h
 
     URL_BASE=<YOUR_URL_BASE> //example: http://localhost:
     MS_USERS_URL=<YOUR_MS_USERS_URL> //example: http://localhost:3001

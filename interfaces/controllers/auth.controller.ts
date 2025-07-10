@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Response, NextFunction } from 'express';
 import { meUser, loginUser } from '&/application/use-cases/auth';
 import { RequestWithToken, RequestLoginUser } from '&/types/express';
 import buildLogger from '&/infrastructure/logs';
