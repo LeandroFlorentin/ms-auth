@@ -1,12 +1,14 @@
 import { Request, Application } from 'express';
 import { ILoginBody } from '&/application/dtos/auth/login.dto';
 
-export interface RequestWithToken extends Request {
+type TokenType = {
   token?: string;
-}
+};
 
-export interface RequestLoginUser extends Request {
-  body: ILoginBody;
-}
+type RequestExpress<Q, B> = Request<unknown, unknown, B, Q>;
+
+export type RequestWithToken = RequestExpress<unknown, unknown> & TokenType;
+
+export type RequestLoginUser = RequestExpress<unknown, ILoginBody>;
 
 export { Application };
