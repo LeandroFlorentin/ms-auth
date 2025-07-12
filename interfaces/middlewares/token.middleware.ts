@@ -1,9 +1,6 @@
 import { Response, NextFunction } from 'express';
 import { APIError } from '&/shared';
 import { RequestWithToken } from '&/types/express';
-import buildLogger from '&/infrastructure/logs';
-
-const logger = buildLogger('middlewareToken');
 
 const tokenMiddleware = (req: RequestWithToken, res: Response, next: NextFunction) => {
   const header = req.headers.authorization;
@@ -20,7 +17,6 @@ const tokenMiddleware = (req: RequestWithToken, res: Response, next: NextFunctio
 };
 
 function manageError(message: string): never {
-  logger.error(message);
   throw new APIError(401, message);
 }
 

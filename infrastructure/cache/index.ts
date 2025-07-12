@@ -8,4 +8,9 @@ const cache = new Redis({
   host: RD_HOST,
 });
 
+cache.on('error', (err) => {
+  console.error('Error de conexión con Redis', err.message);
+  process.exit(1);
+});
+
 export default cache;
