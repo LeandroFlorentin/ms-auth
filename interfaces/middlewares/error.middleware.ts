@@ -7,12 +7,7 @@ const logger = buildLogger('middlewareError');
 
 const jwtErrorNames = ['TokenExpiredError', 'JsonWebTokenError', 'NotBeforeError'];
 
-export const errorMiddleware = (
-  err: ErrorType,
-  _: Request,
-  res: Response,
-  __: NextFunction, // eslint-disable-line @typescript-eslint/no-unused-vars
-) => {
+export const errorMiddleware = (err: ErrorType, _: Request, res: Response, __: NextFunction) => {
   logger.error(err.message);
 
   if (jwtErrorNames.includes(err.name)) {

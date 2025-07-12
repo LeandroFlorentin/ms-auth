@@ -17,4 +17,16 @@ export default defineConfig([
   },
   globalIgnores(['tests/', 'dist/', 'node_modules/', 'coverage/']),
   tseslint.configs.recommended,
+  {
+    files: ['**/*.{ts,js}'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          varsIgnorePattern: '^_',
+          argsIgnorePattern: '^_',
+        },
+      ],
+    },
+  },
 ]);
