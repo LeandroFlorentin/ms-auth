@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response } from '&/types/express';
 import buildLogger from '&/infrastructure/logs';
 import { isAxiosError } from 'axios';
 import { ErrorType } from '&/types/middlewares';
@@ -23,7 +23,7 @@ export const errorMiddleware = (err: ErrorType, _: Request, res: Response, __: N
   }
 
   const status = Number(err.code) || 500;
-  const message = err.message || 'Internal Server Error';
+  const message = err.message || 'Error interno de servidor.';
   res.status(status).json({ errors: [message] });
   return;
 };

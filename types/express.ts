@@ -1,4 +1,4 @@
-import { Request, Application } from 'express';
+import { Request, Response, Application, NextFunction } from 'express';
 import { ILoginBody } from '&/application/dtos/auth/login.dto';
 
 type TokenType = {
@@ -11,4 +11,4 @@ export type RequestWithToken = RequestExpress<unknown, unknown> & TokenType;
 
 export type RequestLoginUser = RequestExpress<unknown, ILoginBody>;
 
-export { Application };
+export { Application, Request, Response, NextFunction };
