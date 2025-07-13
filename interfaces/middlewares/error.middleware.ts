@@ -5,12 +5,15 @@ import { ErrorType } from '&/types/middlewares';
 
 const logger = buildLogger('middlewareError');
 
-const jwtErrorNames = ['TokenExpiredError', 'JsonWebTokenError', 'NotBeforeError'];
+const isJwtError = (err: ErrorType) => ['TokenExpiredError', 'JsonWebTokenError', 'NotBeforeError'].includes(err.name);
 
 export const errorMiddleware = (err: ErrorType, _: Request, res: Response, __: NextFunction) => {
+  const status = Number(err.code) || 500;
+  const message = err.message || 'Error interno de servidor.';
+
   logger.error(err.message);
 
-  if (jwtErrorNames.includes(err.name)) {
+  if (isJwtError(err)) {
     res.status(401).json({ errors: [err.message] });
     return;
   }
@@ -22,8 +25,6 @@ export const errorMiddleware = (err: ErrorType, _: Request, res: Response, __: N
     return;
   }
 
-  const status = Number(err.code) || 500;
-  const message = err.message || 'Error interno de servidor.';
   res.status(status).json({ errors: [message] });
   return;
 };
