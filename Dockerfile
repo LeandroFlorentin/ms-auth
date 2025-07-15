@@ -16,5 +16,6 @@ EXPOSE 3000
 COPY --from=prod-depencies /app/node_modules ./node_modules
 COPY --from=prod-depencies /app/package.json ./package.json
 COPY --from=prod-builder /app/dist ./dist
+COPY .env .env
 CMD ["npm","start"]
 
