@@ -66,8 +66,8 @@ Una vez tengas tu dialect crea el archivo .env en la raiz del proyecto y ponle t
 Tener en cuenta que en este microservicio se crea un usuario de prueba en Redis al iniciar el proyecto, el cual esta como ejemplo en el swagger de el endpoint de autenticación.
 
 ```diff
-- Red is for not required authentication
-+ Green is for required authentication
+- Color rojo es que no requiere autenticación
++ Color azul es que requiere autenticación
 ```
 
 Los endpoints que requieran autenticación deberán enviar su token a través de los headers, utilizando el esquema Bearer Token.
@@ -79,7 +79,7 @@ Los endpoints que requieran autenticación deberán enviar su token a través de
 ```
 
 ```diff
-- Authentication is not required
+- No requiere autenticación.
 ```
 
 Parametros del body:
@@ -112,7 +112,7 @@ Ejemplo de respuesta fallida:
 ```
 
 ```diff
-+ Authentication is required
++ Requiere autenticación
 ```
 
 Ejemplo de respuesta correcta:
