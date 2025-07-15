@@ -51,13 +51,6 @@ Una vez tengas tu dialect crea el archivo .env en la raiz del proyecto y ponle t
 ```env
     PORT=<YOUR_PORT>
 
-    DB_USER=<YOUR_DB_USER>
-    DB_PASSWORD=<YOUR_DB_PASSWORD>
-    DB_HOST=<YOUR_DB_HOST>
-    DB_DIALECT=<YOUR_DB_DIALECT>
-    DB_NAME=<YOUR_DB_NAME>
-    DB_PORT=<YOUR_DB_PORT>
-
     RD_PASSWORD=<YOUR_REDIS_PASSWORD>
     RD_PORT=<YOUR_REDIS_PORT>
     RD_HOST=<YOUR_REDIS_HOST>
