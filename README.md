@@ -63,7 +63,7 @@ Una vez tengas tu dialect crea el archivo .env en la raiz del proyecto y ponle t
 
 # Referencia de API
 
-Tener en cuenta que en este microservicio se crea un usuario de prueba en Redis al iniciar el proyecto, el cual esta como ejemplo en el swagger de el endpoint de autenticación.
+## Tener en cuenta que en este microservicio se crea un usuario de prueba en Redis al iniciar el proyecto, el cual esta como ejemplo en el swagger de el endpoint de autenticación.
 
 ```diff
 - Color rojo es que no requiere autenticación
@@ -89,7 +89,7 @@ Parametros del body:
 | `username` | `string` | **Requerido**. Usuario o email con el que se registro al usuario. |
 | `password` | `string` | **Requerido**. Contraseña del usuario.                            |
 
-Ejemplo de respuesta correcta:
+Ejemplo de respuesta exitosa:
 
 ```json
 {
@@ -115,7 +115,7 @@ Ejemplo de respuesta fallida:
 + Requiere autenticación
 ```
 
-Ejemplo de respuesta correcta:
+Ejemplo de respuesta exitosa:
 
 ```json
 {
@@ -130,7 +130,7 @@ Ejemplo de respuesta correcta:
 }
 ```
 
-Ejemplo de respuesta incorrecta:
+Ejemplo de respuesta fallida:
 
 ```json
 {
@@ -140,4 +140,6 @@ Ejemplo de respuesta incorrecta:
 
 # Autor
 
-[@LeandroFlorentin](https://www.linkedin.com/in/leandro-florentin/)
+**Leandro Florentín**  
+🔗 [Perfil de LinkedIn](https://www.linkedin.com/in/leandro-florentin/)  
+📧 leandro.florentin@hotmail.com
