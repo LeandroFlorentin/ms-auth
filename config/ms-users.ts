@@ -1,5 +1,5 @@
-const { MS_USERS_URL } = process.env;
+import { env } from '&/shared/env';
 
 export const msUsers = {
-  URL: MS_USERS_URL as string,
+  URL: env('MS_USERS_URL') as string,
 };

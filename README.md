@@ -143,3 +143,4 @@ Ejemplo de respuesta fallida:
 **Leandro Florentín**  
 🔗 [Perfil de LinkedIn](https://www.linkedin.com/in/leandro-florentin/)  
 📧 leandro.florentin@hotmail.com
+| GOP+I
