@@ -6,4 +6,5 @@ export interface IUserDB {
   role: string;
   createdAt: Date;
   updatedAt: Date | null;
+  isActive: boolean;
 }

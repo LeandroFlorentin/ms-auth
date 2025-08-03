@@ -10,6 +10,7 @@ export const createUser = async (): Promise<void> => {
     role: ['ADMIN'],
     createdAt: new Date().toISOString(),
     updatedAt: null,
+    isActive: true,
   };
   user.password = await hashPassword(user.password);
   const json_user = JSON.stringify(user);

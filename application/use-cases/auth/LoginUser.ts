@@ -25,6 +25,8 @@ export const loginUser = async (msUserRepository: IMsUserRepository, cacheReposi
   const isPasswordValid = await comparePassword(body.password, password);
   if (!isPasswordValid) throw new APIError(401, 'Contraseña incorrecta.');
 
+  if (!user.isActive) throw new APIError(401, 'Usuario inactivo.');
+
   const token = generateToken(restUser);
 
   return { token };
